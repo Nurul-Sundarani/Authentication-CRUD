@@ -11,8 +11,8 @@ module.exports = function(app) {
   });
   app.post('/signin', requireSignin, Authentication.signin);
   app.post('/signup', Authentication.signup);
-  app.post('/insertdata', Authentication.insert);
-  app.get('/getdata', Authentication.get);
-  app.put('/updatedata/:id', Authentication.put);
-  app.delete('/deletedata/:id', Authentication.delete);
+  app.post('/insertdata',requireSignin , Authentication.insert);
+  app.get('/getdata', requireSignin , Authentication.get);
+  app.put('/updatedata/:id',requireSignin, Authentication.put);
+  app.delete('/deletedata/:id', requireSignin , Authentication.delete);
 };
